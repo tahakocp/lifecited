@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>lifecited: a practical life guide where every claim quotes its source</title>
+<meta name="description" content="{{.Entries}} practical, evidence-graded tips on staying alive, first aid, health, money, scams and online safety. Every claim quotes a primary source, checked automatically.">
+<style>
+:root{--bg:#fbfaf7;--fg:#1d1d1b;--muted:#6b6a65;--line:#e4e1d8;--card:#fff;--a:#18794e;--b:#8a5a00;--c:#56606e;--link:#1f5fa8;--warn:#b42318}
+@media (prefers-color-scheme:dark){:root{--bg:#141412;--fg:#ecebe6;--muted:#a3a29b;--line:#2d2c28;--card:#1c1b19;--a:#4cc38a;--b:#e2a336;--c:#9aa4b2;--link:#7fb0ff;--warn:#ff8a80}}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--fg);font:17px/1.55 Georgia,"Iowan Old Style","Times New Roman",serif}
+header,main,footer{max-width:760px;margin:0 auto;padding:0 18px}
+header{padding-top:36px}
+h1{font:600 30px/1.2 system-ui,-apple-system,"Segoe UI",sans-serif;margin:0 0 8px}
+.lede{font-size:19px;margin:0 0 12px}
+.meta{color:var(--muted);font:14px/1.5 system-ui,sans-serif;margin:0 0 18px}
+.tools{position:sticky;top:0;background:var(--bg);padding:10px 0;border-bottom:1px solid var(--line);z-index:1;display:flex;gap:8px;flex-wrap:wrap;font:15px system-ui,sans-serif}
+#q{flex:1 1 220px;padding:9px 11px;font:inherit;border:1px solid var(--line);border-radius:6px;background:var(--card);color:var(--fg)}
+.tools button{font:inherit;padding:8px 12px;border:1px solid var(--line);border-radius:6px;background:var(--card);color:var(--fg);cursor:pointer}
+.tools button[aria-pressed=true]{border-color:var(--fg)}
+nav.toc{font:15px/1.8 system-ui,sans-serif;margin:16px 0}
+nav.toc a{color:var(--link);margin-right:14px;white-space:nowrap}
+h2{font:600 22px/1.3 system-ui,sans-serif;margin:34px 0 6px;padding-top:6px}
+.intro{color:var(--muted);margin:0 0 10px}
+article{background:var(--card);border:1px solid var(--line);border-radius:8px;padding:14px 16px;margin:12px 0}
+article h3{font:600 18px/1.35 system-ui,sans-serif;margin:0 0 8px;display:flex;gap:10px;align-items:baseline}
+article h3 a{color:inherit;text-decoration:none}
+.id{color:var(--muted);font-weight:400;font-size:14px;min-width:2.4em}
+.g{margin-left:auto;font:700 12px system-ui,sans-serif;padding:2px 7px;border-radius:4px;border:1px solid currentColor;white-space:nowrap}
+.gA{color:var(--a)}.gB{color:var(--b)}.gC{color:var(--c)}
+dl{margin:0;display:grid;grid-template-columns:4.2em 1fr;gap:2px 10px}
+dt{color:var(--muted);font:14px/1.9 system-ui,sans-serif}
+dd{margin:0}
+.src{margin:10px 0 0;font-size:15px}
+.src a{color:var(--link)}
+blockquote{margin:6px 0 6px 0;padding:2px 0 2px 12px;border-left:3px solid var(--line);color:var(--fg);font-style:italic}
+.st{font:12px system-ui,sans-serif;font-style:normal;color:var(--muted);margin-left:6px}
+.st.missing,.st.unreachable{color:var(--warn)}
+.note{color:var(--muted);font-size:15px;margin:8px 0 0}
+.hide{display:none}
+#none{color:var(--muted);font:15px system-ui,sans-serif;margin:24px 0}
+footer{color:var(--muted);font:14px/1.6 system-ui,sans-serif;padding:30px 18px 50px;border-top:1px solid var(--line);margin-top:30px}
+footer a{color:var(--link)}
+</style>
+</head>
+<body>
+<header>
+<h1>lifecited</h1>
+<p class="lede">A practical life guide where every claim quotes its source. {{.Entries}} things that cost little and protect your life, health, money and accounts.</p>
+<p class="meta">Grade A {{index .Grades "A"}} &middot; B {{index .Grades "B"}} &middot; C {{index .Grades "C"}} &middot; {{.Quotes}} quotes from {{.Pages}} pages{{if .CheckedOn}} &middot; {{.QuotesOK}} of {{.Quotes}} quotes found on the live pages on {{.CheckedOn}}{{end}}.<br>
+A: systematic review or trial-based guideline. B: an official body's summary of research or statistics. C: official practical guidance.<br>
+This is not medical, legal or financial advice. It quotes the people who give that advice; follow your doctor and your local rules.</p>
+</header>
+<main>
+<div class="tools">
+<input id="q" type="search" placeholder="Search: burns, scam, sleep, passwords..." aria-label="Search the guide">
+<button type="button" data-g="A" aria-pressed="false">A only</button>
+<button type="button" data-g="AB" aria-pressed="false">A + B</button>
+</div>
+<nav class="toc">{{range .Chapters}}<a href="#{{.Anchor}}">{{.Number}}. {{.Title}}</a> {{end}}</nav>
+{{range .Chapters}}
+<section id="{{.Anchor}}">
+<h2>{{.Number}}. {{.Title}}</h2>
+{{range .Intro}}<p class="intro">{{.}}</p>{{end}}
+{{range .Entries}}
+<article id="{{.Anchor}}" data-g="{{.Grade}}" data-s="{{.Search}}">
+<h3><span class="id">{{.ID}}</span><a href="#{{.Anchor}}">{{.Title}}</a><span class="g g{{.Grade}}" title="Evidence grade">{{.Grade}}</span></h3>
+<dl><dt>Cost</dt><dd>{{.Cost}}</dd><dt>Gain</dt><dd>{{.Gain}}</dd></dl>
+{{range .Sources}}<div class="src"><a href="{{.URL}}" rel="noopener">{{.Label}}</a>
+{{range .Quotes}}<blockquote>{{.Text}}{{if .Status}}<span class="st {{.Status}}">{{if eq .Status "ok"}}quote found{{else if eq .Status "missing"}}quote not found on the page{{else}}page not reachable{{end}}</span>{{end}}</blockquote>{{end}}</div>{{end}}
+{{range .Notes}}<p class="note">Note: {{.}}</p>{{end}}
+</article>
+{{end}}
+</section>
+{{end}}
+<p id="none" class="hide">Nothing matches.</p>
+</main>
+<footer>
+Built {{.BuiltOn}} from the Markdown in <a href="{{.Repo}}">{{.Repo}}</a>. Text CC BY 4.0. Found a wrong quote or a better source? Open an issue.
+</footer>
+<script>
+(function(){
+var q=document.getElementById('q'),arts=[].slice.call(document.querySelectorAll('article')),
+secs=[].slice.call(document.querySelectorAll('section')),btns=[].slice.call(document.querySelectorAll('.tools button')),g='';
+function run(){var t=q.value.toLowerCase().trim().split(/\s+/).filter(Boolean),n=0;
+arts.forEach(function(a){var ok=(!g||g.indexOf(a.dataset.g)>=0)&&t.every(function(w){return a.dataset.s.indexOf(w)>=0});
+a.classList.toggle('hide',!ok);if(ok)n++});
+secs.forEach(function(s){s.classList.toggle('hide',!s.querySelector('article:not(.hide)'))});
+document.getElementById('none').classList.toggle('hide',n>0)}
+q.addEventListener('input',run);
+btns.forEach(function(b){b.addEventListener('click',function(){var on=b.getAttribute('aria-pressed')!=='true';
+btns.forEach(function(x){x.setAttribute('aria-pressed','false')});b.setAttribute('aria-pressed',String(on));g=on?b.dataset.g:'';run()})});
+var h=location.hash.match(/^#q=(.+)/);if(h){q.value=decodeURIComponent(h[1]);run()}
+})();
+</script>
+</body>
+</html>
