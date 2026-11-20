@@ -1,0 +1,23 @@
+name: Suggest an entry
+description: Something cheap that protects life, health, money or accounts, with a primary source.
+labels: [new entry]
+body:
+  - type: input
+    id: title
+    attributes:
+      label: The advice, in one line
+    validations:
+      required: true
+  - type: input
+    id: source
+    attributes:
+      label: Primary source (link)
+      description: A government body, WHO, a regulator, a professional body, or a systematic review. Not a blog or a news story.
+    validations:
+      required: true
+  - type: textarea
+    id: quote
+    attributes:
+      label: The exact sentence from that page
+    validations:
+      required: true

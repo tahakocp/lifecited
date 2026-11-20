@@ -1,0 +1,41 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  schedule:
+    - cron: "17 5 * * 1" # Mondays: are the quotes still on the pages?
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-go@v5
+        with:
+          go-version: "1.22"
+      - run: go vet ./...
+      - run: go test ./...
+      - run: go run ./cmd/cite lint -github
+
+  quotes:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-go@v5
+        with:
+          go-version: "1.22"
+      - name: Check every quote against its live page
+        run: go run ./cmd/cite check -github -cache .cache -json report.json
+      - name: Mutation test (a quote with one changed digit must be reported)
+        run: scripts/mutation-test.sh .cache
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: quote-report
+          path: report.json

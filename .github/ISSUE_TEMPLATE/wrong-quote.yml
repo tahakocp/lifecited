@@ -1,0 +1,22 @@
+name: Wrong or outdated entry
+description: A quote is gone, a number changed, or the summary says more than the source.
+labels: [correction]
+body:
+  - type: input
+    id: entry
+    attributes:
+      label: Entry number
+      placeholder: "3.6"
+    validations:
+      required: true
+  - type: textarea
+    id: what
+    attributes:
+      label: What is wrong
+      description: Paste the sentence from the source page if you can.
+    validations:
+      required: true
+  - type: input
+    id: source
+    attributes:
+      label: Better or newer source (link)
