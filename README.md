@@ -2,7 +2,7 @@
 
 A practical life guide in plain English where every claim quotes its source, and a bot checks every week that the quote is still on the source's page.
 
-**[Read it online](https://tahakocpinar.github.io/lifecited/)** (one 74 KB page, works offline once saved) · [Chapters in Markdown](book/)
+**[Read it online](https://tahakocp.github.io/lifecited/)** (one 74 KB page, works offline once saved) · [Chapters in Markdown](book/)
 
 <p align="center"><img src="docs/demo.gif" alt="Searching the guide for burns and scams, then filtering to grade A entries" width="720"></p>
 
@@ -52,12 +52,12 @@ Grades describe the source, not how important the advice is:
 - `cite lint` parses the chapters strictly. Every entry needs a cost, a gain, a grade and at least one quoted source, and every number in the Gain line has to appear in one of the entry's quotes. On the first run it found six numbers in four of my own summaries that the quotes did not back, for example "5 to 6 cm" when the page says "five-six centimetres".
 - `cite check` downloads each page once and looks for each quote. Matching ignores case, punctuation, curly quotes and spacing, but every word and number has to be there in order. When a quote is missing it prints how much of it still matches, so you can tell a changed number from a deleted page. It also warns when a page redirects elsewhere; in the first runs that flagged six moved pages, including Action Fraud becoming Report Fraud.
 - PubMed blocks scripts, so PubMed links are checked against the abstract from the [Europe PMC API](https://europepmc.org/RestfulWebService).
-- CI runs the check on every push and every Monday. The [published page](https://tahakocpinar.github.io/lifecited/) shows "quote found" or "quote not found" under each quote from the latest run.
+- CI runs the check on every push and every Monday. The [published page](https://tahakocp.github.io/lifecited/) shows "quote found" or "quote not found" under each quote from the latest run.
 
 Run it yourself (Go 1.22+):
 
 ```sh
-git clone https://github.com/TahaKocpinar/lifecited && cd lifecited
+git clone https://github.com/tahakocp/lifecited && cd lifecited
 go run ./cmd/cite check -cache .cache   # live quote check
 go run ./cmd/cite build -o site         # site/index.html
 scripts/mutation-test.sh .cache         # needs jq
@@ -78,7 +78,7 @@ scripts/mutation-test.sh .cache         # needs jq
 
 ## Contributing
 
-See [CONTRIBUTING.md](CONTRIBUTING.md). Corrections and professional reviews matter most: [report a wrong entry](https://github.com/TahaKocpinar/lifecited/issues/new?template=wrong-quote.yml), [suggest an entry](https://github.com/TahaKocpinar/lifecited/issues/new?template=new-entry.yml).
+See [CONTRIBUTING.md](CONTRIBUTING.md). Corrections and professional reviews matter most: [report a wrong entry](https://github.com/tahakocp/lifecited/issues/new?template=wrong-quote.yml), [suggest an entry](https://github.com/tahakocp/lifecited/issues/new?template=new-entry.yml).
 
 ## License
 

@@ -5,8 +5,8 @@ import (
 	"testing"
 	"time"
 
-	"github.com/TahaKocpinar/lifecited/internal/book"
-	"github.com/TahaKocpinar/lifecited/internal/check"
+	"github.com/tahakocp/lifecited/internal/book"
+	"github.com/tahakocp/lifecited/internal/check"
 )
 
 func TestRender(t *testing.T) {

@@ -21,7 +21,7 @@ import (
 
 // UserAgent is sent with every request. Some sites (cdc.gov, for one) refuse
 // browser-looking agents from data centres but accept an honest one.
-const UserAgent = "lifecited-check/0.1 (+https://github.com/TahaKocpinar/lifecited)"
+const UserAgent = "lifecited-check/0.1 (+https://github.com/tahakocp/lifecited)"
 
 // Fetcher downloads sources, optionally through an on-disk cache.
 type Fetcher struct {

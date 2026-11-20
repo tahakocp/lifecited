@@ -1,3 +1,3 @@
-module github.com/TahaKocpinar/lifecited
+module github.com/tahakocp/lifecited
 
 go 1.22

@@ -15,13 +15,13 @@ import (
 	"strings"
 	"time"
 
-	"github.com/TahaKocpinar/lifecited/internal/book"
-	"github.com/TahaKocpinar/lifecited/internal/check"
-	"github.com/TahaKocpinar/lifecited/internal/site"
-	"github.com/TahaKocpinar/lifecited/internal/source"
+	"github.com/tahakocp/lifecited/internal/book"
+	"github.com/tahakocp/lifecited/internal/check"
+	"github.com/tahakocp/lifecited/internal/site"
+	"github.com/tahakocp/lifecited/internal/source"
 )
 
-const repoURL = "https://github.com/TahaKocpinar/lifecited"
+const repoURL = "https://github.com/tahakocp/lifecited"
 
 func main() {
 	if len(os.Args) < 2 {

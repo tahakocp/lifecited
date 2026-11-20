@@ -5,8 +5,8 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/TahaKocpinar/lifecited/internal/book"
-	"github.com/TahaKocpinar/lifecited/internal/source"
+	"github.com/tahakocp/lifecited/internal/book"
+	"github.com/tahakocp/lifecited/internal/source"
 )
 
 type fakeFetcher map[string]*source.Page
