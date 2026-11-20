@@ -12,7 +12,7 @@ A practical life guide in plain English where every claim quotes its source, and
 |---|---|
 | Entries | 50 (grade A 5, B 19, C 26) |
 | Quotes | 101, from 55 pages (WHO, NHS, CDC, USPSTF, CISA, NCSC, FCA, CFPB, FINRA, Cochrane abstracts) |
-| Quotes found on the live pages | 101 of 101 on 2026-11-20 |
+| Quotes found on the live pages | 101 of 101 from my machine on 2026-11-20. From GitHub's runners 98 of 101: reportfraud.police.uk answers them with 403, so its 3 quotes show as unreachable |
 | Mutation test | changed one digit in each of the 48 quotes that contain a number; the checker flagged 48 of 48 |
 | Full check | about 10 s for all 55 pages, 4 requests at a time |
 
