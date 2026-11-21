@@ -70,7 +70,7 @@ scripts/mutation-test.sh .cache         # needs jq
 - Most sources are from the US and the UK, so emergency numbers and some figures are local to them. The first aid and money chapters say so at the top.
 - A quote being on the page proves the source says it, not that the source is right, and not that my one-line summary is fair. The number rule catches invented figures; it can't catch a summary that overstates a careful sentence.
 - Some sites block requests from cloud servers. Those show up as "unreachable" warnings, not failures. PDFs and paywalled papers are not supported.
-- I wrote this with help from AI tools. Every quote was checked by the tool against the live page, and I reread the summaries against the quotes, but no doctor, lawyer or financial adviser has reviewed it yet. If you are one, a review of a single chapter is the most useful thing you could give this project.
+- Every quote was checked by the tool against the live page, and I reread the summaries against the quotes, but no doctor, lawyer or financial adviser has reviewed it yet. If you are one, a review of a single chapter is the most useful thing you could give this project.
 
 ## Why
 
